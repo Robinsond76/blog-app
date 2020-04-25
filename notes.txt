@@ -1,0 +1,12 @@
+Blog-App Process
+
+1) Installed Create-React-App
+2) Cleaned the App
+3) Installed dependencies (axios, react-router-dom)
+4) Installed Dev dependencies (Json-Server  & Concurrently)
+5) Created a DB.json and placed some dummy data
+6) Worked on App.js File:
+  Imported Browser-Router as Route, Router and Switch
+  Imported Fragment
+  Created the routes to all the basic pages I had in mind.
+7) Created all the basic page components for viewing.

@@ -16,7 +16,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "json-server": "json-server --watch db.json --port 5000",
+    "json-server": "json-server --watch db.json --port 5000 --routes routes.json",
     "dev": "concurrently \"npm start\" \"npm run json-server\""
   },
   "eslintConfig": {
@@ -37,5 +37,6 @@
   "devDependencies": {
     "concurrently": "^5.2.0",
     "json-server": "^0.16.1"
-  }
+  },
+  "proxy": "http://localhost:5000"
 }

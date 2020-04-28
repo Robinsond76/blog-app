@@ -1,7 +1,12 @@
 import React from 'react';
+import Blogs from '../Blogs/Blogs';
 
 const Home = () => {
-  return <div className='ui container'>Home Page</div>;
+  return (
+    <div>
+      <Blogs />
+    </div>
+  );
 };
 
 export default Home;

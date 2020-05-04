@@ -18,9 +18,14 @@ const Blogs = () => {
 
   return (
     <Fragment>
-      {blogs.map((blog) => (
-        <BlogItem key={blog.id} blog={blog} />
-      ))}
+      <div className='ui huge header'>Blog Posts</div>
+      <div className='ui segment'>
+        <div className='ui divided items'>
+          {blogs.map((blog) => (
+            <BlogItem key={blog.id} blog={blog} />
+          ))}
+        </div>
+      </div>
     </Fragment>
   );
 };

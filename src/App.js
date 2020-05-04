@@ -14,14 +14,16 @@ function App() {
     <Router>
       <Fragment>
         <Navbar />
-        <BlogProvider>
-          <Switch>
-            <Route exact path='/' component={Home} />
-            <Route exact path='/blogs/new' component={BlogNew} />
-            <Route exact path='/blogs/:id' component={BlogPost} />
-            <Route exact path='/blogs/:id/edit' component={BlogEdit} />
-          </Switch>
-        </BlogProvider>
+        <div className='ui main text container'>
+          <BlogProvider>
+            <Switch>
+              <Route exact path='/' component={Home} />
+              <Route exact path='/blogs/new' component={BlogNew} />
+              <Route exact path='/blogs/:id' component={BlogPost} />
+              <Route exact path='/blogs/:id/edit' component={BlogEdit} />
+            </Switch>
+          </BlogProvider>
+        </div>
       </Fragment>
     </Router>
   );

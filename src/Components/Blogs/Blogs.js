@@ -1,19 +1,25 @@
-import React, { Fragment, useContext, useEffect } from 'react';
-import BlogContext from '../../context/blogs/blogContext';
+import React, { Fragment, useEffect } from 'react';
+import {
+  useBlogState,
+  useBlogDispatch,
+  getBlogs,
+} from '../../context/blogs/BlogContext';
+import BlogItem from './BlogItem';
 
 const Blogs = () => {
-  const blogContext = useContext(BlogContext);
+  const blogState = useBlogState();
+  const blogDispatch = useBlogDispatch();
 
-  const { blogs, getBlogs } = blogContext;
+  const { blogs } = blogState;
 
   useEffect(() => {
-    getBlogs();
-  }, []);
+    getBlogs(blogDispatch);
+  }, [blogDispatch]);
 
   return (
     <Fragment>
       {blogs.map((blog) => (
-        <h2>{blog.title}</h2>
+        <BlogItem key={blog.id} blog={blog} />
       ))}
     </Fragment>
   );

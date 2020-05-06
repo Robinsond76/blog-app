@@ -1,12 +1,41 @@
-import React from 'react';
+import React, { Fragment, useEffect } from 'react';
+import Spinner from '../layout/Spinner';
+
+import {
+  getBlog,
+  useBlogState,
+  useBlogDispatch,
+} from '../../context/blogs/blogContext';
 
 const BlogPost = ({ match }) => {
-  const postNumber = match.params.id;
+  const blogId = match.params.id;
+  const blogDispatch = useBlogDispatch();
+
+  useEffect(() => {
+    getBlog(blogDispatch, blogId);
+
+    return () => {
+      blogDispatch({ type: 'CLEAR_BLOG' });
+    };
+  }, [blogDispatch, blogId]);
+
+  const {
+    blog: { title, img, content },
+    isLoading,
+  } = useBlogState();
+
+  if (isLoading) {
+    return <Spinner />;
+  }
 
   return (
-    <div className='ui container'>
-      <h4>This is more info about about Blog Post #{postNumber}.</h4>
-    </div>
+    <Fragment>
+      <div className='ui segment'>
+        <div className='ui huge header'>{title}</div>
+        <img src={img} alt='' className='ui large image' />
+        <div>{content}</div>
+      </div>
+    </Fragment>
   );
 };
 

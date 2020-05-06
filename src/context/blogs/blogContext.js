@@ -9,6 +9,7 @@ const BlogProvider = ({ children }) => {
   const initialState = {
     blogs: [],
     blog: {},
+    isLoading: true,
   };
 
   const [state, dispatch] = useReducer(blogReducer, initialState);
@@ -45,6 +46,7 @@ const config = {
 };
 
 export const getBlogs = async (dispatch) => {
+  dispatch({ type: 'SET_LOADING' });
   try {
     const res = await axios.get('/api/blogs');
 
@@ -55,10 +57,22 @@ export const getBlogs = async (dispatch) => {
 };
 
 export const addBlog = async (dispatch, blog) => {
+  dispatch({ type: 'SET_LOADING' });
   try {
     const res = await axios.post('/api/blogs', blog, config);
 
     dispatch({ type: 'ADD_BLOG', payload: res.data });
+  } catch (err) {
+    console.log('error fetching');
+  }
+};
+
+export const getBlog = async (dispatch, id) => {
+  dispatch({ type: 'SET_LOADING' });
+  try {
+    const res = await axios.get(`/api/blogs/${id}`);
+
+    dispatch({ type: 'GET_BLOG', payload: res.data });
   } catch (err) {
     console.log('error fetching');
   }

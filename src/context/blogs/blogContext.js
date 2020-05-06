@@ -38,11 +38,27 @@ export { BlogProvider, useBlogState, useBlogDispatch };
 
 //Action Helpers
 
+const config = {
+  headers: {
+    ContentType: 'application/json',
+  },
+};
+
 export const getBlogs = async (dispatch) => {
   try {
     const res = await axios.get('/api/blogs');
 
     dispatch({ type: 'GET_BLOGS', payload: res.data });
+  } catch (err) {
+    console.log('error fetching');
+  }
+};
+
+export const addBlog = async (dispatch, blog) => {
+  try {
+    const res = await axios.post('/api/blogs', blog, config);
+
+    dispatch({ type: 'ADD_BLOG', payload: res.data });
   } catch (err) {
     console.log('error fetching');
   }

@@ -5,6 +5,11 @@ export default (state, action) => {
         ...state,
         blogs: action.payload,
       };
+    case 'ADD_BLOG':
+      return {
+        ...state,
+        blogs: [...state.blogs, action.payload],
+      };
     default:
       throw new Error(`Unhandled action type: ${action.type}`);
   }

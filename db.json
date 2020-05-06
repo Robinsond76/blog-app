@@ -20,6 +20,13 @@
       "img": "http://smarterware.org/wp-content/uploads/2016/09/blogging.jpg",
       "content": "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.",
       "date": "04-29-2020"
+    },
+    {
+      "title": "Amazing Camping Spot",
+      "img": "https://mikeputnamphoto.files.wordpress.com/2008/08/lower-meadow-campsite.jpg",
+      "content": "Check this place out.. It's truly the blah lbha blah",
+      "date": "05-04-2020",
+      "id": 4
     }
   ]
 }

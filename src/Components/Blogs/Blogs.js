@@ -3,7 +3,7 @@ import {
   useBlogState,
   useBlogDispatch,
   getBlogs,
-} from '../../context/blogs/BlogContext';
+} from '../../context/blogs/blogContext';
 import BlogItem from './BlogItem';
 
 const Blogs = () => {

@@ -23,4 +23,4 @@ const BlogItem = ({ blog: { title, id, date, img, content } }) => {
   );
 };
 
-export default BlogItem;
+export default React.memo(BlogItem);

@@ -1,8 +1,10 @@
 import React, { Fragment, useEffect } from 'react';
 import Spinner from '../layout/Spinner';
+import { Link } from 'react-router-dom';
 
 import {
   getBlog,
+  deleteBlog,
   useBlogState,
   useBlogDispatch,
 } from '../../context/blogs/blogContext';
@@ -20,7 +22,7 @@ const BlogPost = ({ match }) => {
   }, [blogDispatch, blogId]);
 
   const {
-    blog: { title, img, content },
+    blog: { title, img, content, id },
     isLoading,
   } = useBlogState();
 
@@ -34,6 +36,12 @@ const BlogPost = ({ match }) => {
         <div className='ui huge header'>{title}</div>
         <img src={img} alt='' className='ui large image' />
         <div>{content}</div>
+        <div className='ui divider'></div>
+        <Link to={`/`}>Back </Link>
+        <Link to={`/blogs/${id}/edit`}>| Edit </Link>
+        <Link to='/'>
+          <span onClick={() => deleteBlog(blogDispatch, id)}>| Delete</span>
+        </Link>
       </div>
     </Fragment>
   );

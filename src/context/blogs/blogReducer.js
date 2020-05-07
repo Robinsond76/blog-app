@@ -22,6 +22,19 @@ export default (state, action) => {
         ...state,
         blog: {},
       };
+    case 'UPDATE_BLOG':
+      return {
+        ...state,
+        blogs: state.blogs.map((blog) =>
+          blog.id === action.payload.id ? action.payload : blog
+        ),
+        isLoading: false,
+      };
+    case 'DELETE_BLOG':
+      return {
+        ...state,
+        blogs: state.blogs.map((blog) => blog.id !== action.payload),
+      };
     case 'SET_LOADING':
       return {
         ...state,

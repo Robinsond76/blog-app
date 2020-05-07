@@ -77,3 +77,23 @@ export const getBlog = async (dispatch, id) => {
     console.log('error fetching');
   }
 };
+
+export const deleteBlog = async (dispatch, id) => {
+  try {
+    await axios.delete(`/api/blogs/${id}`);
+    dispatch({ type: 'DELETE_BLOG', payload: id });
+  } catch (err) {
+    console.log('error fetching');
+  }
+};
+
+export const updateBlog = async (dispatch, blog) => {
+  dispatch({ type: 'SET_LOADING' });
+  try {
+    const res = await axios.put(`/api/blogs/${blog.id}`, blog, config);
+
+    dispatch({ type: 'UPDATE_BLOG', payload: res.data });
+  } catch (err) {
+    console.log('error fetching');
+  }
+};

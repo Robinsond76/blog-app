@@ -1,4 +1,5 @@
 import React, { Fragment, useEffect } from 'react';
+import Spinner from '../layout/Spinner';
 import {
   useBlogState,
   useBlogDispatch,
@@ -10,11 +11,15 @@ const Blogs = () => {
   const blogState = useBlogState();
   const blogDispatch = useBlogDispatch();
 
-  const { blogs } = blogState;
+  const { blogs, isLoading } = blogState;
 
   useEffect(() => {
     getBlogs(blogDispatch);
   }, [blogDispatch]);
+
+  if (isLoading) {
+    return <Spinner />;
+  }
 
   return (
     <Fragment>
